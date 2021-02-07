@@ -17,18 +17,6 @@ const routes: Routes = [
     component: SigninComponent
   },
   {
-    path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent
-  },
-  {
-    path: 'locked',
-    component: LockedComponent
-  },
-  {
     path: 'page404',
     component: Page404Component
   },

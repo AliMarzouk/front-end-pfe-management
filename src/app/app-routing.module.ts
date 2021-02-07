@@ -23,7 +23,6 @@ const routes: Routes = [
       }
     ],
   },
-
   {
     path: 'authentication',
     component: AuthLayoutComponent,
