@@ -10,7 +10,7 @@
             <form class="m-4" [formGroup]="addSessionForm" (ngSubmit)="addSessionByForm()">
               <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Date de Debut</mat-label>
                     <input matInput [owlDateTimeTrigger]="date1" [owlDateTime]="date1">
                     <owl-date-time #date1></owl-date-time>
@@ -39,7 +39,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                   <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Capacité</mat-label>
-                    <input formControlName="capacity" matInput>
+                    <input formControlName="capacity" type="number" matInput>
                     <mat-icon matSuffix>face</mat-icon>
                     <mat-error *ngIf="addSessionForm.get('capacity').hasError('required')">champs Obligatoire</mat-error>
                   </mat-form-field>
