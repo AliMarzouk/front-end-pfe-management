@@ -86,4 +86,53 @@ export const ROUTES: RouteInfo[] = [
       }
     ],
   },
+  {
+    path: '',
+    title: '-- Sessions',
+    moduleName: '',
+    iconType: '',
+    icon: '',
+    class: '',
+    groupTitle: true,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
+  },
+  {
+    path: '',
+    title: 'Gestion des Sessions',
+    moduleName: 'sessions',
+    iconType: 'material-icons-two-tone',
+    icon: 'event',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+      {
+        path: '/sessions/add',
+        title: 'Ajout Session',
+        moduleName: 'sessions',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+      {
+        path: '/sessions/list',
+        title: 'Liste Sessions',
+        moduleName: 'sessions',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      }
+    ],
+  }
 ];

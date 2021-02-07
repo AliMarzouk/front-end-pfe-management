@@ -14,7 +14,7 @@
                           <ul class="header-buttons-left ml-0">
                             <li class="dropdown">
                               <h2>
-                                <strong>Liste des Etudiants</strong></h2>
+                                <strong>Liste des Sessions</strong></h2>
                             </li>
                             <li class="dropdown m-l-20">
                               <label for="search-input"><i class="material-icons search-icon">search</i></label>
@@ -51,37 +51,35 @@
                         </mat-cell>
                       </ng-container>
                       <!-- ID Column -->
-                      <ng-container matColumnDef="id">
+                      <ng-container matColumnDef="start">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>
-                          Numéro d'inscription
+                          Date de début
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{row.nce}}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{row.startDate.toDateString()}}</mat-cell>
                       </ng-container>
-                      <ng-container matColumnDef="name">
+                      <ng-container matColumnDef="end">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>
-                          Nom et Prénom
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.lastName}} {{row.firstName}}
-                        </mat-cell>
-                      </ng-container>
-                      <ng-container matColumnDef="email">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>Email
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.email}}
-                        </mat-cell>
-                      </ng-container>
-                      <ng-container matColumnDef="field">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>
-                          Filière
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.field}}
-                        </mat-cell>
-                      </ng-container>
-                      <ng-container matColumnDef="cin">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header>CIN
+                          Date de clôture
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row">
-                          {{row.cin}}
+                          {{row.endDate.toDateString()}}
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="prof">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                          Président
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                          {{row.president.lastName}}
+                          {{row.president.firstName}}
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="capacity">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                          Capacité
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                          {{row.capacity}}
                         </mat-cell>
                       </ng-container>
                       <!-- actions -->
@@ -95,11 +93,11 @@
                           <mat-menu #menu="matMenu">
                             <button mat-menu-item (click)="editCall(row)">
                               <i class="material-icons-two-tone align-middle mr-2">create</i>
-                              <span>Edit Etudiant</span>
+                              <span>Modifier</span>
                             </button>
                             <button mat-menu-item (click)="deleteItem(row)">
                               <i class="material-icons-two-tone align-middle mr-2">delete_forever</i>
-                              <span>Supprimer Etudiant</span>
+                              <span>Supprimer</span>
                             </button>
                           </mat-menu>
                         </mat-cell>
@@ -113,7 +111,7 @@
                     </mat-table>
                     <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
                       <div class="alert alert-danger">
-                        Auncun Etudiant Trouvé
+                        Auncune Session Trouvée
                       </div>
                     </div>
                     <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
