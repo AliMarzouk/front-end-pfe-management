@@ -53,10 +53,10 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width col-4" appearance="outline">
                   <mat-label>Numéro d'inscription</mat-label>
-                  <input formControlName="registrationNumber" matInput required>
+                  <input formControlName="nce" matInput required>
                   <mat-icon matSuffix>face</mat-icon>
-                  <mat-error *ngIf="addStudentForm.get('registrationNumber').hasError('pattern')"> Ce champs doit contenir 7 chiffres </mat-error>
-                  <mat-error *ngIf="addStudentForm.get('registrationNumber').hasError('required')">champs Obligatoire</mat-error>
+                  <mat-error *ngIf="addStudentForm.get('nce').hasError('pattern')"> Ce champs doit contenir 7 chiffres </mat-error>
+                  <mat-error *ngIf="addStudentForm.get('nce').hasError('required')">champs Obligatoire</mat-error>
                 </mat-form-field>
               </div>
               <div class="row">
@@ -92,7 +92,7 @@
                         <ngx-mat-file-input
                           formControlName="file"
                           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                          [multiple]="true"
+                          [multiple]="false"
                           #removableInput
                           placeholder="Fichier excel ou csv">
                         </ngx-mat-file-input>

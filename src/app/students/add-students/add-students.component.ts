@@ -22,7 +22,7 @@ export class AddStudentsComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
   ngOnInit() {
     this.formInit();
-    this.addStudentForm.get('registrationNumber')
+    this.addStudentForm.get('nce')
     // interval(1000).subscribe(value => {
     //   console.log(this.fileForm.get('file'));
     // })
@@ -48,15 +48,10 @@ export class AddStudentsComponent implements OnInit {
     })
 
   }
-
-
-
   addStudentByForm() {
     console.log(this.addStudentForm)
   }
-
   addStudentsByFile() {
     console.log(this.fileForm)
-
   }
 }

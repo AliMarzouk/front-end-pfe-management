@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs";
 import {Professor} from "../model/professor.model";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 export const DEPARTMENTS = [
   'Génie Physique et Instrumentation',
@@ -12,6 +14,8 @@ export const DEPARTMENTS = [
 @Injectable()
 export class ProfessorsService {
 
+  path: string = environment.API_URL+'professors/'
+
   dataChange: BehaviorSubject<Professor[]> = new BehaviorSubject<Professor[]>([]);
 
   private dialogData: any;
@@ -19,29 +23,22 @@ export class ProfessorsService {
     return this.dataChange.value;
   }
 
-  getAllProfessors() {
+  constructor(private http: HttpClient) {
+    this.dataChange.subscribe(value => {
+      console.log(value);
+    })
+  }
 
-    this.dataChange.next([
-        new Professor('ali',
-          'marzouk',
-          'bli@insat',
-          DEPARTMENTS[1],
-          89999999
-        ),
-        new Professor('mohsen',
-          'khaled',
-          'ahla@bik',
-          DEPARTMENTS[2],
-          66666666
-        )
-      ]
-    )
+  getAllProfessors() {
+    return this.http.get(this.path).subscribe(value => {
+      console.log(value);
+      this.dataChange.next([value['content']]);
+    });
   }
 
 
-  updateProfessor(value: any) {
-    this.dialogData = value;
-    // TODO link with backend
+  updateProfessor(prof: Professor) {
+    return this.http.put(this.path + prof.cin,prof)
   }
 
   getDialogData() {

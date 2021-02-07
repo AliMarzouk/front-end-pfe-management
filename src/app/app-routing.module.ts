@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [],
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
       {
@@ -20,6 +20,11 @@ const routes: Routes = [
         path: 'professors',
         loadChildren: () =>
           import('./professors/professors.module').then((m) => m.ProfessorsModule),
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       }
     ],
   },

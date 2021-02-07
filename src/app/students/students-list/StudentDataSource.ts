@@ -53,7 +53,7 @@ export class StudentDataSource extends DataSource<Student> {
               student.lastName +
               student.firstName +
               student.cin +
-              student.registrationNumber +
+              student.nce +
               student.field
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
@@ -84,7 +84,7 @@ export class StudentDataSource extends DataSource<Student> {
       let propertyB: number | string = '';
       switch (this._sort.active) {
         case 'id':
-          [propertyA, propertyB] = [+a.registrationNumber, +b.registrationNumber];
+          [propertyA, propertyB] = [+a.nce, +b.nce];
           break;
         case 'name':
           [propertyA, propertyB] = [a.lastName + ' ' + a.firstName, b.lastName + ' ' + b.firstName];

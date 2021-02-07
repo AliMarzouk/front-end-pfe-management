@@ -100,10 +100,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
   logout() {
-    this.authService.logout().subscribe((res) => {
-      if (!res.success) {
-        this.router.navigate(['/authentication/signin']);
-      }
-    });
+    this.authService.logout();
   }
 }

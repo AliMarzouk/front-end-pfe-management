@@ -69,7 +69,7 @@ export class StudentsListComponent implements OnInit, AfterViewInit {
   }
 
   editCall(row) {
-    this.id = row.registrationNumber;
+    this.id = row.nce;
     const dialogRef = this.dialog.open(FormComponent, {
       data: {
         student: row,
@@ -81,7 +81,7 @@ export class StudentsListComponent implements OnInit, AfterViewInit {
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.studentService.dataChange.value.findIndex(
-          (x) => x.registrationNumber === this.id
+          (x) => +x.nce === this.id
         );
         // Then you update that record using data from dialogData (values you enetered)
         this.studentService.dataChange.value[

@@ -69,7 +69,7 @@ export class FormComponent {
         Validators.required,
         Validators.pattern("^\\d{8}$")
       ])],
-      registrationNumber: [this.student.registrationNumber, Validators.compose([
+      registrationNumber: [this.student.nce, Validators.compose([
         Validators.required,
         Validators.pattern("^\\d{7}$")
       ])]

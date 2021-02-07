@@ -23,6 +23,7 @@ import {
 
 import { ClickOutsideModule } from 'ng-click-outside';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -58,6 +59,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    MatSnackBarModule
   ],
   entryComponents: [],
   bootstrap: [AppComponent],

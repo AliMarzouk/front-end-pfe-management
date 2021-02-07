@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatSnackBar} from "@angular/material/snack-bar";
 @NgModule({
   declarations: [
     Page500Component,
@@ -25,6 +26,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatButtonModule
+  ],
+  providers: [
+    MatSnackBar
   ]
 })
 export class AuthenticationModule { }

@@ -1,7 +1,16 @@
+import {Role} from "./role.enum";
+
 export class User {
-  id: number;
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  email: string;
+  role: Role;
+  academicYear: {
+    _id: string;
+    endDate: number;
+    startDate: number;
+  }
+  iat?: number;
+  exp?: number;
+  exp_date: Date;
+  firstName?: string;
+  lastName?: string;
 }

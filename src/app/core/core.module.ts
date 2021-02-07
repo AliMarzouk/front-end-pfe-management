@@ -5,6 +5,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { AuthService } from './service/auth.service';
 import { DynamicScriptLoaderService } from './service/dynamic-script-loader.service';
 import { throwIfAlreadyLoaded } from './guard/module-import.guard';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,7 @@ import { throwIfAlreadyLoaded } from './guard/module-import.guard';
     AuthGuard,
     AuthService,
     DynamicScriptLoaderService,
+    MatSnackBar
   ],
 })
 export class CoreModule {
