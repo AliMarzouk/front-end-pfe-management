@@ -1,0 +1,116 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-12">
+        <div class="card">
+          <div class="header">
+            <h2 style="margin-left: 15px; padding-left: 7px; padding-top: 7px">Ajout de professeur par formulaire</h2>
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="addProfessorForm" (ngSubmit)="addProfessorByForm()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Prénom du professeur</mat-label>
+                    <input formControlName="firstName" matInput required>
+                    <mat-icon matSuffix>face</mat-icon>
+                    <mat-error *ngIf="addProfessorForm.get('firstName').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nom du professeur</mat-label>
+                    <input formControlName="lastName" matInput>
+                    <mat-icon matSuffix>face</mat-icon>
+                    <mat-error *ngIf="addProfessorForm.get('lastName').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email du professeur</mat-label>
+                    <input formControlName="email" matInput required>
+                    <mat-icon matSuffix>face</mat-icon>
+                    <mat-error *ngIf="addProfessorForm.get('email').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field class="example-full-width col-4" appearance="outline">
+                  <mat-label>Département</mat-label>
+                  <mat-select formControlName="department">
+                    <mat-option *ngFor="let department of departments" value="{{ department }}">Département {{ department }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addProfessorForm.get('department').hasError('required')">champs Obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width col-4" appearance="outline">
+                  <mat-label>CIN</mat-label>
+                  <input formControlName="cin" matInput required>
+                  <mat-icon matSuffix>face</mat-icon>
+                  <mat-error *ngIf="addProfessorForm.get('cin').hasError('pattern')"> Ce champs doit contenir 8 chiffres </mat-error>
+                  <mat-error *ngIf="addProfessorForm.get('cin').hasError('required')">champs Obligatoire </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <button class="mr-3"
+                          type="submit"
+                          [disabled]="!addProfessorForm.valid"
+                          mat-raised-button
+                          color="primary">
+                    Valider
+                  </button>
+                  <button type="button" (click)="addProfessorForm.reset()" mat-stroked-button color="warn">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-12">
+        <div class="card">
+          <div class="header">
+            <h2 style="margin-left: 15px; padding-left: 7px; padding-top: 7px">Ajout de professeurs par fichier excel ou csv</h2>
+          </div>
+          <div class="body">
+            <div class="example-container m-4">
+              <form>
+                <div class="row">
+                  <div class="col-6">
+                    <form [formGroup]="fileForm" (ngSubmit)="addProfessorsByFile()">
+                      <mat-form-field class="example-full-width mb-3">
+                        <ngx-mat-file-input
+                          formControlName="file"
+                          accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                          [multiple]="true"
+                          #removableInput
+                          placeholder="Fichier excel ou csv">
+                        </ngx-mat-file-input>
+                        <button mat-icon-button matSuffix *ngIf="!removableInput.empty"
+                                (click)="removableInput.clear($event)">
+                          <mat-icon>clear</mat-icon>
+                        </button>
+                        <mat-icon matSuffix>cloud_upload</mat-icon>
+                      </mat-form-field>
+                      <div class="col-6">
+                        <button class="mr-3" type="submit"
+                                [disabled]="removableInput.empty"
+                                mat-raised-button
+                                color="primary">Valider</button>
+                        <button type="button" (click)="addProfessorForm.reset()" mat-stroked-button color="warn">Reset</button>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
