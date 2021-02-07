@@ -5,7 +5,6 @@ import {SessionsRoutingModule} from "./sessions-routing.module";
 import {SessionsService} from "./service/sessions.service";
 import { AddSessionComponent } from './add-session/add-session.component';
 import {ProfessorsService} from "../professors/service/professors.service";
-import {StudentsRoutingModule} from "../students/students-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";

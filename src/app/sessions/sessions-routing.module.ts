@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {ListComponent} from "./list/list.component";
-import {AddProfessorComponent} from "../professors/add-professor/add-professor.component";
+import {AddSessionComponent} from "./add-session/add-session.component";
 
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    component: AddProfessorComponent
+    component: AddSessionComponent
   }
 ]
 @NgModule({

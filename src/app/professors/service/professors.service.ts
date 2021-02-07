@@ -27,15 +27,14 @@ export class ProfessorsService {
   }
 
   getAllProfessors() {
-    return this.http.get(this.path).subscribe(value => {
-      console.log(value);
-      this.dataChange.next([value['content']]);
+    return this.http.get<Professor[]>(this.path).subscribe(value => {
+      this.dataChange.next(value);
     });
   }
 
 
   updateProfessor(prof: Professor) {
-    return this.http.put(this.path + prof.cin,prof)
+    return this.http.put(this.path + prof._id,prof).subscribe();
   }
 
   getDialogData() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Professor} from "../../professors/model/professor.model";
+import {ProfessorsService} from "../../professors/service/professors.service";
 
 @Component({
   selector: 'app-add-session',
@@ -11,9 +12,13 @@ export class AddSessionComponent implements OnInit {
 
   professors: Professor[] = [];
   addSessionForm: FormGroup;
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,
+              private professorService: ProfessorsService) {}
   ngOnInit() {
     this.formInit();
+    this.professorService.dataChange.subscribe(value => {
+      this.professors = value;
+    })
   }
 
   formInit() {
