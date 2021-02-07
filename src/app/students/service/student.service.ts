@@ -4,6 +4,12 @@ import {BehaviorSubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
+export const Levels = [
+  'CYCLE',
+  'LICENCE',
+  'MASTER'
+]
+
 @Injectable()
 export class StudentService {
   path: string = environment.API_URL + 'students/';
@@ -19,28 +25,10 @@ export class StudentService {
 
 
   getAllStudents() {
-    this.http.get(this.path).subscribe(data => {
+    this.http.get<Student[]>(this.path).subscribe(data => {
       console.log(data);
-      this.dataChange.next(data['content'])
+      this.dataChange.next(data)
     })
-
-    // this.dataChange.next([
-    //   new Student('ali',
-    //   'marzouk',
-    //   'ali@insat',
-    //   'GL',
-    //   '99999999',
-    //   '9999999'
-    //   ),
-    //   new Student('bli',
-    //   'marzouk',
-    //   'bli@insat',
-    //   'GL',
-    //   '89999999',
-    //   '8999999'
-    //   )
-    //   ]
-    // )
   }
 
   getDialogData() {
@@ -49,7 +37,7 @@ export class StudentService {
 
   updateStudent(student: Student): void {
     this.dialogData = student;
-    // TODO: Link with backend
+    this.http.put(this.path + student.id, student).subscribe();
   }
 
   deleteStudent(student: Student){

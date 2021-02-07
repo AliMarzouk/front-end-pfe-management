@@ -22,8 +22,9 @@ import {
 } from 'ngx-perfect-scrollbar';
 
 import { ClickOutsideModule } from 'ng-click-outside';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {AuthInterceptorService} from "./core/interceptor/auth-interceptor";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -59,6 +60,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
     MatSnackBarModule
   ],
   entryComponents: [],

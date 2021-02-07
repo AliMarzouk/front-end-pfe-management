@@ -27,7 +27,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-12 mb-2">
+                <div class="col-6 mb-2">
                   <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Email de l'étudiant</mat-label>
                     <input formControlName="email" matInput required>
@@ -35,6 +35,13 @@
                     <mat-error *ngIf="addStudentForm.get('email').hasError('required')">champs Obligatoire</mat-error>
                   </mat-form-field>
                 </div>
+                <mat-form-field class="example-full-width col-6" appearance="outline">
+                  <mat-label>Niveau</mat-label>
+                  <mat-select formControlName="level">
+                    <mat-option *ngFor="let level of levels" value="{{ level }}">{{ level }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="addStudentForm.get('level').hasError('required')">champs Obligatoire</mat-error>
+                </mat-form-field>
               </div>
               <div class="row">
                 <mat-form-field class="example-full-width col-4" appearance="outline">

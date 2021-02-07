@@ -1,0 +1,54 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-12">
+        <div class="card">
+          <div class="header">
+            <h2 style="margin-left: 15px; padding-left: 7px; padding-top: 7px">Ajout d'étudiant par formulaire</h2>
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="addSessionForm" (ngSubmit)="addSessionByForm()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Date de Debut</mat-label>
+                    <input matInput [owlDateTimeTrigger]="date1" [owlDateTime]="date1">
+                    <owl-date-time #date1></owl-date-time>
+                    <mat-error *ngIf="addSessionForm.get('startTime').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Date de clotûre</mat-label>
+                    <input matInput [owlDateTimeTrigger]="date2" [owlDateTime]="date2">
+                    <owl-date-time #date2></owl-date-time>
+                    <mat-error *ngIf="addSessionForm.get('endDate').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>President de la session</mat-label>
+                    <mat-select formControlName="president">
+                      <mat-option *ngFor="let prof of professors" value="{{ prof }}">{{ prof.firstName }} {{ prof.lastName }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addSessionForm.get('president').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Capacité</mat-label>
+                    <input formControlName="capacity" matInput>
+                    <mat-icon matSuffix>face</mat-icon>
+                    <mat-error *ngIf="addSessionForm.get('capacity').hasError('required')">champs Obligatoire</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Levels} from "../service/student.service";
 
 @Component({
   selector: 'app-add-students',
@@ -8,6 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AddStudentsComponent implements OnInit {
 
+  levels = Levels;
   fields = [
     'Bio',
     'CH',
@@ -37,11 +39,12 @@ export class AddStudentsComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.compose([Validators.required,Validators.email])],
       field: ['', Validators.required],
+      level: ['', Validators.required],
       cin: ['', Validators.compose([
         Validators.required,
         Validators.pattern("^\\d{8}$")
       ])],
-      registrationNumber: ['', Validators.compose([
+      nce: ['', Validators.compose([
         Validators.required,
         Validators.pattern("^\\d{7}$")
       ])]
@@ -52,6 +55,6 @@ export class AddStudentsComponent implements OnInit {
     console.log(this.addStudentForm)
   }
   addStudentsByFile() {
-    console.log(this.fileForm)
+    console.log(this.fileForm.value)
   }
 }

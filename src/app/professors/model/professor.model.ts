@@ -1,4 +1,5 @@
 export class Professor {
+  public _id?: number;
   public firstName: string;
   public lastName: string;
   public email: string;

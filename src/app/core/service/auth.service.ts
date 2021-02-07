@@ -27,7 +27,8 @@ export class AuthService {
         const decoded_token: User = jwtDecode(data['access-token']);
         this.user.next(
           {... decoded_token,
-            exp_date: new Date(decoded_token['exp'])
+            exp_date: new Date(decoded_token['exp']),
+            token: data['access-token']
           });
         this.router.navigate(['/dashboard/welcome'])
       },error => {

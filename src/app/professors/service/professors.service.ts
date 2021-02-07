@@ -5,10 +5,10 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
 export const DEPARTMENTS = [
-  'Génie Physique et Instrumentation',
-  'Génie Informatique et Mathématiques',
-  'Génie Biologique et de Chimie',
-  'Sciences Sociales, Langues et Formation Générale'
+  'GPI',
+  'GBC',
+  'GMI',
+  'SSLFG'
 ]
 
 @Injectable()
@@ -24,9 +24,6 @@ export class ProfessorsService {
   }
 
   constructor(private http: HttpClient) {
-    this.dataChange.subscribe(value => {
-      console.log(value);
-    })
   }
 
   getAllProfessors() {
